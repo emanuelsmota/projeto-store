@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ProductsModule } from './src/products/products.module';
 import { ProductsModule } from './products/products.module';
 
 @Module({

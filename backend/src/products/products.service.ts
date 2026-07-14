@@ -1,19 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { Product } from './entities/product.entity';
 
 @Injectable()
 export class ProductsService {
+  private products: Product[] = [];
   create(createProductDto: CreateProductDto) {
-    return 'This action adds a new product';
+    const novoProduto = {
+      id: this.products.length + 1,
+      name: createProductDto.name,
+      price: createProductDto.price,
+      description: createProductDto.description,
+      stock: createProductDto.stock,
+    };
+    this.products.push(novoProduto);
+    return novoProduto;
   }
 
   findAll() {
-    return `This action returns all products`;
+    return this.products;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} product`;
+    return this.products.find((produto) => produto.id === id);
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
