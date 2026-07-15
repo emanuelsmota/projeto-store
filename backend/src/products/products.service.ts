@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
@@ -23,14 +23,22 @@ export class ProductsService {
   }
 
   findOne(id: number) {
-    return this.products.find((produto) => produto.id === id);
+    const produto = this.products.find((produto) => produto.id === id);
+    if(!produto){
+      throw new NotFoundException('Esse produto não existe')
+    }
+    return produto
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+    const produto = this.findOne(id);
+    Object.assign(produto , updateProductDto)
+    return produto
   }
 
   remove(id: number) {
-    return `This action removes a #${id} product`;
+    this.findOne(id);
+    this.products = this.products.filter((produto) => produto.id !== id);
+    return { message: 'Produto removido com sucesso!'};
   }
 }
