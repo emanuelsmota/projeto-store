@@ -1,12 +1,20 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Georgia, serif;
   background-color: #1a1a1a;
   color: #f0e6d2;
   padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 h1 {
-  color: #d4af37;
+  color: #D3CA86;
+  text-align: center;
 }
 
 #lista-produtos {
@@ -17,8 +25,8 @@ h1 {
 
 .card {
   background-color: #2a2a2a;
-  border: 1px solid #d4af37;
-  border-radius: 8px;
+  border: 1px solid #D3CA86;
+  border-radius: 6px;
   padding: 15px;
 }
 
@@ -27,4 +35,53 @@ h1 {
   height: 150px;
   object-fit: contain;
   margin-bottom: 10px;
+}
+
+footer{
+  background-color: #D3CA86;
+  color: #2a2a2a;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 1px;
+}
+
+form {
+  background-color: #f4e4bc;
+  border: 4px solid #6b4423;
+  border-radius: 4px;
+  padding: 30px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form input {
+  padding: 10px;
+  border: 2px solid #6b4423;
+  border-radius: 3px;
+  background-color: #fffdf5;
+  color: #3b2a1a;
+  font-family: Georgia, serif;
+  font-size: 15px;
+}
+
+form button {
+  background-color: #6b4423;
+  color: #f4e4bc;
+  border: none;
+  padding: 12px;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: Georgia, serif;
+}
+
+form button:hover {
+  background-color: #8a5a2e;
 }
