@@ -7,6 +7,7 @@ async function carregarProdutos() {
   produtos.forEach((produto) => {
     divProdutos.innerHTML += `
       <div class="card">
+        <img src="${produto.imageUrl}" alt="${produto.name}">
         <h3>${produto.name}</h3>
         <p>Preço: 🪙${produto.price}</p>
         <p>Peças disponíveis: ${produto.stock}</p>
