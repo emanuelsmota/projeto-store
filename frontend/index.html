@@ -8,6 +8,19 @@
 <body>
     <main>
       <h1>Guilda dos Mercadores</h1>
+      <select  id="ordenarcao">
+        <option value="">Todos</option>
+        <option value="alfabetica-maior">Ordem Alfabética A-Z</option>
+        <option value="alfabetica-menor">Ordem Alfabética Z-A</option>
+        <option value="valor-min">Valor MIN-MAX</option>
+        <option value="valor-max">Valor MAX-MIN</option>
+      </select>
+      <select id="filtro-tipo">
+        <option value="">Todos</option>
+        <option value="1">Ataque</option>
+        <option value="2">Defesa</option>
+        <option value="3">Consumível</option>
+      </select>
       <div id="lista-produtos"></div>
     </main>
     

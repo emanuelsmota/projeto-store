@@ -10,43 +10,45 @@ export class ProductsService {
   constructor(
     @InjectRepository(Product)
     private readonly repository: Repository<Product>,
-  ) {}
+  ) { }
 
   async findAll() {
-  return await this.repository.find();
+    return await this.repository.find({ relations: { category: true } });
   }
 
   async findOne(id: number) {
-  const produto = await this.repository.findOneBy({ id: id });
-  if (!produto) {
-    throw new NotFoundException('Esse produto não existe');
-  }
-  return produto;
+    const produto = await this.repository.findOne({
+      where: { id: id },
+      relations: { category: true },
+    });;
+    if (!produto) {
+      throw new NotFoundException('Esse produto não existe');
+    }
+    return produto;
   }
 
   async create(createProductDto: CreateProductDto) {
-  const novoProduto = this.repository.create(createProductDto);
-  return await this.repository.save(novoProduto);
-  }
- 
-  async update(id: number, updateProductDto: UpdateProductDto) {
-  const produto = await this.repository.preload({
-    id: id,
-    ...updateProductDto,
-  });
-  if (!produto) {
-    throw new NotFoundException('Esse produto não existe');
-  }
-  return await this.repository.save(produto);
+    const novoProduto = this.repository.create(createProductDto);
+    return await this.repository.save(novoProduto);
   }
 
- async remove(id: number) {
-  const produto = await this.findOne(id);
-  await this.repository.remove(produto);
-  return { message: 'Produto removido com sucesso!' };
+  async update(id: number, updateProductDto: UpdateProductDto) {
+    const produto = await this.repository.preload({
+      id: id,
+      ...updateProductDto,
+    });
+    if (!produto) {
+      throw new NotFoundException('Esse produto não existe');
+    }
+    return await this.repository.save(produto);
+  }
+
+  async remove(id: number) {
+    const produto = await this.findOne(id);
+    await this.repository.remove(produto);
+    return { message: 'Produto removido com sucesso!' };
   }
 }
 
 
 
-  

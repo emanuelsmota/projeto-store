@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <title>Mural de Vendedores - Loja Fireball</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <main>
     <h1>Mural de Vendedores</h1>
@@ -12,6 +14,12 @@
     <form id="form-produto">
       <input type="text" id="input-name" placeholder="Nome do item" required>
       <input type="number" id="input-price" placeholder="Preço (moedas)" required>
+      <select id="input-category" required>
+         <option value="" disabled selected>Selecione o tipo</option>
+         <option value="1">Ataque</option>
+         <option value="2">Defesa</option>
+         <option value="3">Consumível</option>
+      </select>
       <input type="text" id="input-description" placeholder="Descrição" required>
       <input type="number" id="input-stock" placeholder="Quantidade em estoque" required>
       <input type="text" id="input-imageUrl" placeholder="Caminho da imagem (ex: images/nome.png)">
@@ -25,4 +33,5 @@
 
   <script src="mural.js"></script>
 </body>
+
 </html>

@@ -6,6 +6,7 @@ form.addEventListener('submit', async function (evento) {
     const novoProduto = {
         name: document.getElementById('input-name').value,
         price: +document.getElementById('input-price').value,
+        category: { id: +document.getElementById('input-category').value },
         description: document.getElementById('input-description').value,
         stock: +document.getElementById('input-stock').value,
         imageUrl: document.getElementById('input-imageUrl').value,
@@ -19,6 +20,11 @@ form.addEventListener('submit', async function (evento) {
 
     if (isNaN(novoProduto.price) || isNaN(novoProduto.stock)) {
         alert('Preço e estoque precisam ser números válidos!');
+        return;
+    }
+
+    if (!novoProduto.category.id) {
+        alert('Selecione uma categoria!');
         return;
     }
 
