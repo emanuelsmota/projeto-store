@@ -9,6 +9,15 @@ async function desenharProduto() {
   const classeCategoria = classesCategoria[produto.category.id];
   const siglaCategoria = produto.category.name.substring(0, 3).toUpperCase();
 
+  const breadcrumb = document.getElementById('breadcrumb');
+  breadcrumb.innerHTML = `
+    <a href="index.html">Vitrine</a>
+    <span>›</span>
+    <a href="index.html?categoria=${produto.category.id}">${produto.category.name}</a>
+    <span>›</span>
+    <span>${produto.name}</span>
+  `;
+
   const produtoTela = document.getElementById('detalhes-produto');
   produtoTela.innerHTML = `
     <div class="produto-detalhe">
@@ -25,6 +34,42 @@ async function desenharProduto() {
       </div>
     </div>
   `;
+
+  carregarRelacionados(produto);
+}
+
+async function carregarRelacionados(produtoAtual) {
+  const resposta = await fetch('http://localhost:3000/products');
+  const todosProdutos = await resposta.json();
+
+  let relacionados = todosProdutos.filter(
+    (item) => item.category.id === produtoAtual.category.id && item.id !== produtoAtual.id
+  );
+
+  relacionados = relacionados.sort(() => Math.random() - 0.5).slice(0, 3);
+
+  const classesCategoria = { 1: 'card-ataque', 2: 'card-defesa', 3: 'card-consumivel' };
+  const divRelacionados = document.getElementById('produtos-relacionados');
+
+  if (relacionados.length === 0) {
+    divRelacionados.innerHTML = '';
+    document.getElementById('titulo-relacionados').style.display = 'none';
+    return;
+  }
+
+  divRelacionados.innerHTML = '';
+  relacionados.forEach((item) => {
+    divRelacionados.innerHTML += `
+      <a href="produto.html?id=${item.id}" class="card ${classesCategoria[item.category.id]}">
+        <div class="selo">${item.category.name.substring(0, 3).toUpperCase()}</div>
+        <div class="card-imagem-area">
+          <img src="${item.imageUrl}" alt="${item.name}">
+        </div>
+        <h3>${item.name}</h3>
+        <p class="preco">🪙 ${item.price}</p>
+      </a>
+    `;
+  });
 }
 
 desenharProduto();

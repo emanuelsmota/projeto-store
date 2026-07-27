@@ -470,3 +470,41 @@ form button:hover,
   color: var(--cor-borda);
   font-size: 48px;
 }
+
+.breadcrumb {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+}
+
+.breadcrumb a {
+  color: var(--cor-texto-suave);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--cor-latao);
+}
+
+.breadcrumb span {
+  margin: 0 6px;
+}
+
+.titulo-relacionados {
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+  color: var(--cor-texto);
+  margin-top: 32px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+#produtos-relacionados {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+}
