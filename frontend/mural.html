@@ -4,27 +4,43 @@
 <head>
   <meta charset="UTF-8">
   <title>Mural de Vendedores - Loja Fireball</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=EB+Garamond:wght@400;500&family=Spectral:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">Guilda dos Mercadores</a>
+    <div class="navbar-links">
+      <a href="index.html">Vitrine</a>
+      <a href="mural.html">Mural de Vendedores</a>
+    </div>
+  </nav>
+
   <main>
     <h1>Mural de Vendedores</h1>
+    <p class="subtitulo">Registre seu item nos arquivos da guilda</p>
 
     <form id="form-produto">
       <input type="text" id="input-name" placeholder="Nome do item" required>
       <input type="number" id="input-price" placeholder="Preço (moedas)" required>
       <select id="input-category" required>
-         <option value="" disabled selected>Selecione o tipo</option>
-         <option value="1">Ataque</option>
-         <option value="2">Defesa</option>
-         <option value="3">Consumível</option>
+        <option value="" disabled selected>Selecione o tipo</option>
+        <option value="1">Ataque</option>
+        <option value="2">Defesa</option>
+        <option value="3">Consumível</option>
       </select>
       <input type="text" id="input-description" placeholder="Descrição" required>
       <input type="number" id="input-stock" placeholder="Quantidade em estoque" required>
       <input type="text" id="input-imageUrl" placeholder="Caminho da imagem (ex: images/nome.png)">
       <button type="submit">Adicionar à loja</button>
     </form>
+
+    <p class="aviso-guilda">Todo item cadastrado aparece imediatamente na vitrine da guilda.</p>
   </main>
 
   <footer>

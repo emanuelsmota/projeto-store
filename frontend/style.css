@@ -1,7 +1,30 @@
+/* ===========================================
+   VARIÁVEIS GLOBAIS (paleta e tipografia)
+   =========================================== */
+:root {
+  --cor-fundo: #1c1815;
+  --cor-fundo-card: #241f1a;
+  --cor-fundo-imagem: #2a241e;
+  --cor-borda: #4a4237;
+  --cor-texto: #e8ddc7;
+  --cor-texto-suave: #9a9184;
+  --cor-latao: #c9a961;
+  --cor-ataque: #8b2635;
+  --cor-defesa: #3d5a6c;
+  --cor-consumivel: #4a6741;
+
+  --fonte-titulo: 'Cinzel', serif;
+  --fonte-corpo: 'EB Garamond', serif;
+  --fonte-numero: 'Spectral', serif;
+}
+
+/* ===========================================
+   BASE — aplica em todas as páginas
+   =========================================== */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #1a1a1a;
-  color: #f0e6d2;
+  font-family: var(--fonte-corpo);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
   padding: 20px;
   min-height: 100vh;
   display: flex;
@@ -10,104 +33,440 @@ body {
 
 main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+main.centralizado {
+  justify-content: center;
 }
 
 h1 {
-  color: #D3CA86;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  color: var(--cor-texto);
+  letter-spacing: 0.5px;
   text-align: center;
+}
+
+.subtitulo {
+  text-align: center;
+  font-style: italic;
+  color: var(--cor-texto-suave);
+  font-size: 16px;
+  margin-top: -10px;
+  margin-bottom: 20px;
 }
 
 select {
   padding: 10px;
-  border: 2px solid #d4af37;
-  border-radius: 4px;
-  background-color: #2a2a2a;
-  color: #f0e6d2;
+  border: 2px solid var(--cor-latao);
+  border-radius: 0;
+  background-color: var(--cor-fundo-card);
+  color: var(--cor-texto);
+  font-family: var(--fonte-corpo);
   font-size: 15px;
   margin-right: 10px;
   margin-bottom: 20px;
 }
 
+footer {
+  background-color: var(--cor-texto);
+  color: var(--cor-fundo);
+  text-align: center;
+  padding: 15px;
+  border-radius: 0;
+  margin-top: 10px;
+}
+
+footer a {
+  color: var(--cor-ataque);
+  font-weight: 500;
+}
+
+/* ===========================================
+   VITRINE (index.html) — estatísticas
+   =========================================== */
+.estatisticas {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  width: 100%;
+  justify-content: center;
+}
+
+.estatisticas .stat {
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.estatisticas .stat .numero {
+  font-family: var(--fonte-numero);
+  font-size: 28px;
+  color: var(--cor-latao);
+  display: block;
+}
+
+.estatisticas .stat .rotulo {
+  font-size: 12px;
+  color: var(--cor-texto-suave);
+}
+
+/* ===========================================
+   VITRINE (index.html) — atalhos de categoria
+   =========================================== */
+.atalhos-categoria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.atalho {
+  border: 1px solid var(--cor-borda);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.atalho:hover {
+  border-color: var(--cor-latao);
+}
+
+.atalho h3 {
+  font-family: var(--fonte-titulo);
+  margin: 0 0 6px;
+}
+
+.atalho p {
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+  margin: 0;
+}
+
+.atalho-ataque h3 { color: var(--cor-ataque); }
+.atalho-defesa h3 { color: var(--cor-defesa); }
+.atalho-consumivel h3 { color: var(--cor-consumivel); }
+
+/* ===========================================
+   VITRINE (index.html) — carrossel
+   =========================================== */
+.carrossel-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.seta-carrossel {
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-latao);
+  color: var(--cor-latao);
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.seta-carrossel:hover {
+  background-color: var(--cor-latao);
+  color: var(--cor-fundo-card);
+}
+
+.seta-carrossel:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ===========================================
+   VITRINE (index.html) — grid e cards
+   =========================================== */
 #lista-produtos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  width: 100%;
+  transition: opacity 0.2s;
+}
+
+.barra-filtros {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  width: 100%;
+  justify-content: center;
+}
+
+.barra-filtros select {
+  margin: 0;
 }
 
 .card {
-  background-color: #2a2a2a;
-  border: 1px solid #D3CA86;
-  border-radius: 6px;
-  padding: 15px;
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: 0;
+  padding: 14px;
+  position: relative;
+  transition: transform 0.2s;
 }
 
-.card img {
+.card:hover {
+  transform: scale(1.03);
+}
+
+a.card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card .selo {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fonte-titulo);
+  font-size: 10px;
+  font-weight: 700;
+  border: 2px solid var(--cor-fundo-card);
+  color: var(--cor-texto);
+}
+
+.card.card-ataque .selo {
+  background-color: var(--cor-ataque);
+}
+
+.card.card-defesa .selo {
+  background-color: var(--cor-defesa);
+}
+
+.card.card-consumivel .selo {
+  background-color: var(--cor-consumivel);
+}
+
+.card-imagem-area {
   width: 100%;
-  height: 150px;
-  object-fit: contain;
+  height: 120px;
+  background-color: var(--cor-fundo-imagem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 10px;
 }
 
-footer{
-  background-color: #D3CA86;
-  color: #2a2a2a;
+.card-imagem-area img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.card h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 14px;
+  color: var(--cor-texto);
+  margin: 0 0 6px;
+}
+
+.card .preco {
+  font-family: var(--fonte-numero);
+  font-size: 13px;
+  color: var(--cor-latao);
+  margin: 0;
+}
+
+/* ===========================================
+   PÁGINA DE PRODUTO (produto.html)
+   =========================================== */
+.produto-detalhe {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: 0;
+  padding: 20px;
+}
+
+.produto-imagem {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  background-color: var(--cor-fundo-imagem);
+  border: 1px solid var(--cor-borda);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.produto-imagem img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.produto-imagem .selo {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fonte-titulo);
+  font-size: 13px;
+  font-weight: 700;
+  border: 3px solid var(--cor-fundo-card);
+  color: var(--cor-texto);
+}
+
+.produto-imagem.card-ataque .selo {
+  background-color: var(--cor-ataque);
+}
+
+.produto-imagem.card-defesa .selo {
+  background-color: var(--cor-defesa);
+}
+
+.produto-imagem.card-consumivel .selo {
+  background-color: var(--cor-consumivel);
+}
+
+/* ===========================================
+   MURAL (mural.html)
+   =========================================== */
+.aviso-guilda {
   text-align: center;
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 10px;
-  margin-bottom: 1px;
+  font-size: 13px;
+  color: var(--cor-texto-suave);
+  margin-top: 16px;
+  font-style: italic;
+}
+
+/* ===========================================
+   PERGAMINHO — compartilhado entre
+   mural (form) e produto (.produto-info)
+   =========================================== */
+form,
+.produto-info {
+  background-color: #e8ddc7;
+  border: 2px solid var(--cor-latao);
+  border-radius: 0;
+  padding: 30px;
+  color: #2a2318;
+  font-family: var(--fonte-corpo);
 }
 
 form {
-  background-color: #f4e4bc;
-  border: 4px solid #6b4423;
-  border-radius: 4px;
-  padding: 30px;
-  max-width: 500px;
+  width: 90%;
+  max-width: 800px;
   margin: 0 auto;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-form input {
+form input,
+form select {
   padding: 10px;
-  border: 2px solid #6b4423;
-  border-radius: 3px;
+  border: 1px solid var(--cor-latao);
+  border-radius: 0;
   background-color: #fffdf5;
-  color: #3b2a1a;
-  font-family: Georgia, serif;
+  color: #2a2318;
+  font-family: var(--fonte-corpo);
   font-size: 15px;
 }
 
-form select{
-  padding: 10px;
-  border: 2px solid #6b4423;
-  border-radius: 3px;
-  background-color: #fffdf5;
-  color: #3b2a1a;
-  font-family: Georgia, serif;
-  font-size: 15px;
+form select {
+  margin-bottom: 0;
+  margin-right: 0;
 }
 
 form label,
-form p {
-  color: #3b2a1a;
+form p,
+.produto-info p {
+  color: #2a2318;
 }
 
-form button {
-  background-color: #6b4423;
-  color: #f4e4bc;
+form h1,
+.produto-info h1 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-ataque);
+}
+
+form button,
+.produto-info button {
+  background-color: var(--cor-ataque);
+  color: var(--cor-texto);
   border: none;
-  padding: 12px;
-  border-radius: 3px;
-  font-size: 16px;
-  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 0;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--fonte-titulo);
+  letter-spacing: 0.5px;
   cursor: pointer;
-  font-family: Georgia, serif;
 }
 
-form button:hover {
-  background-color: #8a5a2e;
+form button:hover,
+.produto-info button:hover {
+  background-color: #a13040;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--cor-borda);
+  margin-bottom: 32px;
+}
+
+.navbar-logo {
+  font-family: var(--fonte-titulo);
+  font-size: 18px;
+  color: var(--cor-latao);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 24px;
+}
+
+.navbar-links a {
+  color: var(--cor-texto);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.navbar-links a:hover {
+  color: var(--cor-latao);
+}
+
+.banner-monstro {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 40px;
+  width: 100%;
+  padding: 30px 0;
+  color: var(--cor-borda);
+  font-size: 48px;
 }

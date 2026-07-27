@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <title>Guilda dos Mercadores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=EB+Garamond:wght@400;500&family=Spectral:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <main>
-      <h1>Guilda dos Mercadores</h1>
-      <select  id="ordenarcao">
-        <option value="">Todos</option>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">Guilda dos Mercadores</a>
+    <div class="navbar-links">
+      <a href="index.html">Vitrine</a>
+      <a href="mural.html">Mural de Vendedores</a>
+    </div>
+  </nav>
+
+  <main>
+    <p class="subtitulo">Onde aventureiros encontram o equipamento para sua próxima jornada</p>
+
+    <div id="estatisticas" class="estatisticas"></div>
+
+    <div class="atalhos-categoria">
+      <div class="atalho atalho-ataque" data-categoria="1">
+        <h3>Armas de Ataque</h3>
+        <p>Espadas, machados, arcos e mais</p>
+      </div>
+      <div class="atalho atalho-defesa" data-categoria="2">
+        <h3>Proteção</h3>
+        <p>Armaduras, escudos e elmos</p>
+      </div>
+      <div class="atalho atalho-consumivel" data-categoria="3">
+        <h3>Suprimentos</h3>
+        <p>Poções, elixires e afins</p>
+      </div>
+    </div>
+
+    <div class="barra-filtros">
+      <select id="ordenarcao">
+        <option value="todos">Todos</option>
         <option value="alfabetica-maior">Ordem Alfabética A-Z</option>
         <option value="alfabetica-menor">Ordem Alfabética Z-A</option>
         <option value="valor-min">Valor MIN-MAX</option>
@@ -21,12 +56,25 @@
         <option value="2">Defesa</option>
         <option value="3">Consumível</option>
       </select>
+    </div>
+
+    <div class="carrossel-container">
+      <button id="seta-esquerda" class="seta-carrossel">‹</button>
       <div id="lista-produtos"></div>
-    </main>
-    
+      <button id="seta-direita" class="seta-carrossel">›</button>
+    </div>
+    <div class="banner-monstro">
+      <i class="fas fa-dragon"></i>
+      <i class="fas fa-dragon"></i>
+      <i class="fas fa-dragon"></i>
+    </div>
+
+  </main>
+
   <footer>
     <p>Quer vender um item? Cadastre agora mesmo no <a href="mural.html">mural</a></p>
   </footer>
   <script src="script.js"></script>
 </body>
+
 </html>
