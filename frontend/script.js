@@ -14,7 +14,7 @@ function mostrarEstatisticas() {
   const totalItens = todosProdutos.length;
   const categoriasUnicas = new Set(todosProdutos.map((p) => p.category.id));
   const totalCategorias = categoriasUnicas.size;
-  const totalMoedas = todosProdutos.reduce((soma, p) => soma + p.price, 0);
+  const totalMoedas = todosProdutos.reduce((soma, p) => soma + (p.price * p.stock), 0);
 
   document.getElementById('estatisticas').innerHTML = `
     <div class="stat">

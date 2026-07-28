@@ -21,6 +21,10 @@
 /* ===========================================
    BASE — aplica em todas as páginas
    =========================================== */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: var(--fonte-corpo);
   background-color: var(--cor-fundo);
@@ -365,7 +369,7 @@ form,
 .produto-info {
   background-color: #e8ddc7;
   border: 2px solid var(--cor-latao);
-  border-radius: 0;
+  border-radius: 5px;
   padding: 30px;
   color: #2a2318;
   font-family: var(--fonte-corpo);
@@ -507,4 +511,155 @@ form button:hover,
   gap: 20px;
   width: 100%;
   max-width: 800px;
+}
+
+.footer-guilda {
+  width: 100%;
+  background-color: var(--cor-fundo-card);
+  border-top: 1px solid var(--cor-latao);
+  text-align: center;
+  padding: 24px 20px;
+  margin-top: 40px;
+}
+
+.footer-frase {
+  font-style: italic;
+  color: var(--cor-texto);
+  font-size: 15px;
+  margin: 0 0 16px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.footer-links a {
+  color: var(--cor-latao);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: var(--cor-texto);
+}
+
+.footer-marca {
+  font-family: var(--fonte-numero);
+  color: var(--cor-texto-suave);
+  font-size: 12px;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.navbar-carrinho {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.item-carrinho {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--cor-fundo-card);
+  border: 1px solid var(--cor-borda);
+  padding: 14px;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 700px;
+}
+
+.item-carrinho img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background-color: var(--cor-fundo-imagem);
+  padding: 8px;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-info h3 {
+  font-family: var(--fonte-titulo);
+  margin: 0 0 4px;
+  color: var(--cor-texto);
+}
+
+.item-info p {
+  font-family: var(--fonte-numero);
+  color: var(--cor-latao);
+  margin: 0;
+}
+
+.item-carrinho button {
+  background-color: var(--cor-ataque);
+  color: var(--cor-texto);
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: var(--fonte-corpo);
+}
+
+.item-carrinho button:hover {
+  background-color: #a13040;
+}
+
+.controles-quantidade {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.controles-quantidade button {
+  background-color: var(--cor-fundo-imagem);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.controles-quantidade span {
+  min-width: 20px;
+  text-align: center;
+}
+
+#itens-carrinho {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.total-carrinho {
+  font-family: var(--fonte-titulo);
+  font-size: 20px;
+  color: var(--cor-latao);
+  text-align: center;
+  margin: 20px 0 12px;
+}
+
+#resumo-carrinho {
+  text-align: center;
+}
+
+#resumo-carrinho button {
+  background-color: var(--cor-ataque);
+  color: var(--cor-texto);
+  border: none;
+  padding: 12px 32px;
+  font-family: var(--fonte-titulo);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#resumo-carrinho button:hover {
+  background-color: #a13040;
 }

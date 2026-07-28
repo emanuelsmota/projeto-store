@@ -8,6 +8,7 @@ async function desenharProduto() {
   const classesCategoria = { 1: 'card-ataque', 2: 'card-defesa', 3: 'card-consumivel' };
   const classeCategoria = classesCategoria[produto.category.id];
   const siglaCategoria = produto.category.name.substring(0, 3).toUpperCase();
+  const semEstoque = produto.stock === 0;
 
   const breadcrumb = document.getElementById('breadcrumb');
   breadcrumb.innerHTML = `
@@ -30,10 +31,21 @@ async function desenharProduto() {
         <p>${produto.description}</p>
         <p>Preço: 🪙${produto.price}</p>
         <p>Peças disponíveis: ${produto.stock}</p>
-        <button>Comprar</button>
+        <button id="btn-comprar" ${semEstoque ? 'disabled' : ''}>
+          ${semEstoque ? 'Esgotado' : 'Comprar'}
+        </button>
       </div>
     </div>
   `;
+
+  document.getElementById('btn-comprar').addEventListener('click', () => {
+    if (produto.stock === 0) {
+      alert('Este item está esgotado no momento.');
+      return;
+    }
+    adicionarAoCarrinho(produto.id);
+    alert(`${produto.name} foi adicionado ao carrinho!`);
+  });
 
   carregarRelacionados(produto);
 }
