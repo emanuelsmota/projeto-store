@@ -1,9 +1,10 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
+
 
 @Injectable()
 export class ProductsService {
@@ -48,7 +49,35 @@ export class ProductsService {
     await this.repository.remove(produto);
     return { message: 'Produto removido com sucesso!' };
   }
+
+  async checkout(itens: { produtoId: number; quantidade: number }[]) {
+  const produtos: Product[] = [];
+
+  for (const item of itens) {
+    const produto = await this.repository.findOneBy({ id: item.produtoId });
+
+    if (!produto) {
+      throw new NotFoundException(`Produto ${item.produtoId} não existe`);
+    }
+
+    if (produto.stock < item.quantidade) {
+      throw new BadRequestException(
+        `Estoque insuficiente para "${produto.name}". Disponível: ${produto.stock}`,
+      );
+    }
+
+    produtos.push(produto);
+  }
+
+  for (let i = 0; i < produtos.length; i++) {
+    produtos[i].stock -= itens[i].quantidade;
+    await this.repository.save(produtos[i]);
+  }
+
+  return { message: 'Compra realizada com sucesso!' };
+  }
 }
+
 
 
 
